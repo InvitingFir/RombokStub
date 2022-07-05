@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>front</module>
         <module>rest</module>
         <module>http-stub</module>
     </modules>

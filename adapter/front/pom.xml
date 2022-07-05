@@ -9,10 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
-
-    <name>front</name>
     <artifactId>front</artifactId>
-    <version>CURRENT</version>
 
     <build>
         <plugins>
