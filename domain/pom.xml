@@ -10,5 +10,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>domain</artifactId>
+    <name>RombokStub - Domain</name>
 
 </project>
