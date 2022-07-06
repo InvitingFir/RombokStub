@@ -11,6 +11,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>app</artifactId>
     <packaging>pom</packaging>
+    <name>RombokStub - App</name>
+
     <modules>
         <module>api</module>
         <module>impl</module>

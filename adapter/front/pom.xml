@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
     <artifactId>front</artifactId>
+    <name>RombokStub - Front</name>
 
     <build>
         <plugins>
