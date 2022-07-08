@@ -6,21 +6,16 @@
         <artifactId>parent</artifactId>
         <groupId>ru.rombokstub</groupId>
         <version>CURRENT</version>
-        <relativePath>../parent/pom.xml</relativePath>
+        <relativePath>../../parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>domain</artifactId>
-    <name>RombokStub - Domain</name>
-
-    <properties>
-        <jakarta.persistence.version>3.1.0</jakarta.persistence.version>
-    </properties>
+    <artifactId>persistence</artifactId>
+    <name>RombokStub - Persistence</name>
 
     <dependencies>
         <dependency>
-            <groupId>jakarta.persistence</groupId>
-            <artifactId>jakarta.persistence-api</artifactId>
-            <version>${jakarta.persistence.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
     </dependencies>
 
