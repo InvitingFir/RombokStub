@@ -14,7 +14,7 @@ public enum ErrorType {
 
     NO_SUITABLE_SCENARIO("Service doesn't provide scenario, that suites current request params"),
 
-    RESPONSE_SENDING_ERROR("Error occurred while action compilation");
+    RESPONSE_SENDING_ERROR("Error occurred while sending response to destination");
 
     /**
      * Error description
