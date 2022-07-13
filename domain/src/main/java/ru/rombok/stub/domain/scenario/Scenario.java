@@ -8,6 +8,7 @@ import ru.rombok.stub.domain.DomainObject;
 import ru.rombok.stub.domain.log.ExecutionLog;
 import ru.rombok.stub.domain.var.ScenarioVariable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -61,4 +62,22 @@ public class Scenario extends DomainObject {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(foreignKey = @ForeignKey(name = "scenario_execution_log_fk"))
     private List<ExecutionLog> logs;
+
+    public void setVariables(List<ScenarioVariable> variables) {
+        if (this.variables == null || variables == null) {
+            this.variables = new ArrayList<>();
+        } else {
+            this.variables.clear();
+            this.variables.addAll(variables);
+        }
+    }
+
+    public void setLogs(List<ExecutionLog> logs) {
+        if (this.logs == null || logs == null) {
+            this.logs = new ArrayList<>();
+        } else {
+            this.logs.clear();
+            this.logs.addAll(logs);
+        }
+    }
 }

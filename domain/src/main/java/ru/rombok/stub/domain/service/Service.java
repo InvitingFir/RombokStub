@@ -42,4 +42,13 @@ public class Service<T extends Scenario> extends DomainObject {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(foreignKey = @ForeignKey(name = "service_scenario_fk"))
     private List<T> scenarios;
+
+    public void setScenarios(List<T> scenarios) {
+        if (this.scenarios == null || scenarios == null) {
+            this.scenarios = scenarios;
+        } else {
+            this.scenarios.clear();
+            this.scenarios.addAll(scenarios);
+        }
+    }
 }
