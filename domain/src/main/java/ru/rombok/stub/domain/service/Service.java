@@ -27,6 +27,11 @@ public class Service<T extends Scenario> extends DomainObject {
     private String name;
 
     /**
+     * Unique identifier
+     */
+    private String uuid;
+
+    /**
      * Is stub service enabled (disabled by default)
      */
     private boolean enabled;

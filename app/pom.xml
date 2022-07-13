@@ -18,4 +18,11 @@
         <module>impl</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>ru.rombokstub</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

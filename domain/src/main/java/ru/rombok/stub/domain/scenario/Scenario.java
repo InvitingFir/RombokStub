@@ -9,6 +9,7 @@ import ru.rombok.stub.domain.log.ExecutionLog;
 import ru.rombok.stub.domain.var.ScenarioVariable;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Stubbed service scenario
@@ -23,6 +24,11 @@ public class Scenario extends DomainObject {
      * Scenario displayed name
      */
     private String name;
+
+    /**
+     * Unique identifier
+     */
+    private UUID uuid;
 
     /**
      * Predicate for scenario activation

@@ -1,6 +1,7 @@
 CREATE TABLE scenario
 (
     id         BIGSERIAL PRIMARY KEY,
+    uuid       UUID    NOT NULL UNIQUE,
     name       VARCHAR NOT NULL,
     predicate  VARCHAR NOT NULL,
     action     VARCHAR NOT NULL,
