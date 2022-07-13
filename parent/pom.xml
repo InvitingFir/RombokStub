@@ -28,6 +28,7 @@
         <jackson.databind.version>2.13.3</jackson.databind.version>
         <jackson.annotations.version>2.13.3</jackson.annotations.version>
         <jackson.core.version>2.13.3</jackson.core.version>
+        <spring.graphql.version>5.0.2</spring.graphql.version>
     </properties>
 
     <dependencyManagement>
@@ -90,6 +91,12 @@
                 <version>${springfox.swagger.version}</version>
             </dependency>
 
+            <!-- GraphQl -->
+            <dependency>
+                <groupId>com.graphql-java</groupId>
+                <artifactId>graphql-spring-boot-starter</artifactId>
+                <version>${spring.graphql.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

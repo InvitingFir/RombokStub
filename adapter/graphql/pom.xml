@@ -9,6 +9,13 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>rest</artifactId>
-    <name>RombokStub - REST</name>
+    <artifactId>graphql</artifactId>
+    <name>RombokStub - GraphQl</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 </project>
