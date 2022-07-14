@@ -29,6 +29,8 @@
         <jackson.annotations.version>2.13.3</jackson.annotations.version>
         <jackson.core.version>2.13.3</jackson.core.version>
         <spring.graphql.version>5.0.2</spring.graphql.version>
+        <spring.tx.version>5.3.21</spring.tx.version>
+        <spring.beanUtils.version>1.9.4</spring.beanUtils.version>
     </properties>
 
     <dependencyManagement>
@@ -47,6 +49,16 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>app</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>impl</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -70,6 +82,11 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-jpa</artifactId>
                 <version>${spring.jpa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.tx.version}</version>
             </dependency>
 
             <!-- Security -->
@@ -96,6 +113,13 @@
                 <groupId>com.graphql-java</groupId>
                 <artifactId>graphql-spring-boot-starter</artifactId>
                 <version>${spring.graphql.version}</version>
+            </dependency>
+
+            <!-- Util -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${spring.beanUtils.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
