@@ -1,9 +1,7 @@
 package ru.rombok.stub.domain.var;
 
 import jakarta.persistence.Entity;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import ru.rombok.stub.domain.DomainObject;
 
 /**
@@ -13,6 +11,8 @@ import ru.rombok.stub.domain.DomainObject;
 @Setter
 @ToString
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class ScenarioVariable extends DomainObject {
     /**
      * Variable name

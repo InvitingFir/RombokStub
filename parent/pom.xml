@@ -19,6 +19,7 @@
     <name>RombokStub - Parent</name>
 
     <properties>
+        <java.version>17</java.version>
         <rombokstub.version>0.0.1</rombokstub.version>
         <lombok.version>1.18.24</lombok.version>
         <springfox.swagger.version>3.0.0</springfox.swagger.version>
@@ -31,6 +32,9 @@
         <spring.graphql.version>5.0.2</spring.graphql.version>
         <spring.tx.version>5.3.21</spring.tx.version>
         <spring.beanUtils.version>1.9.4</spring.beanUtils.version>
+        <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <jackson.datatype.version>2.13.3</jackson.datatype.version>
+        <assertj.version>3.23.1</assertj.version>
     </properties>
 
     <dependencyManagement>
@@ -140,6 +144,23 @@
             <artifactId>mockito-core</artifactId>
             <version>${mockito.core.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.datatype.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

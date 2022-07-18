@@ -1,0 +1,30 @@
+{
+  "type": "HTTP",
+  "action": "updatedAction",
+  "id": 2,
+  "isDefault": true,
+  "logs": [
+    {
+      "destination": "updatedDestination",
+      "endDateTime": "2020-08-14T12:17:47.720Z",
+      "errorType": "ACTION_COMPILATION_ERROR",
+      "source": "updatedDource",
+      "startDateTime": "2021-08-14T12:17:47.720Z",
+      "success": false
+    }
+  ],
+  "name": "updatedName",
+  "predicate": "updatedPredicate",
+  "url": "updatedUrl",
+  "uuid": "11111111-2222-3333-4444-555555555555",
+  "variables": [
+    {
+      "name": "updatedVar1",
+      "value": "updatedVar1Value"
+    },
+    {
+      "name": "updatedVar2",
+      "value": "updatedVar2Value"
+    }
+  ]
+}

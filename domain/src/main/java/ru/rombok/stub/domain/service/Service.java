@@ -1,5 +1,7 @@
 package ru.rombok.stub.domain.service;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +20,12 @@ import java.util.List;
 @Setter
 @ToString
 @Entity
+@JsonTypeInfo(property = "type", use = JsonTypeInfo.Id.NAME)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = HttpService.class, name = "HTTP"),
+    @JsonSubTypes.Type(value = KafkaService.class, name = "Kafka"),
+    @JsonSubTypes.Type(value = Service.class, name = "Default"),
+})
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Service<T extends Scenario> extends DomainObject {
 

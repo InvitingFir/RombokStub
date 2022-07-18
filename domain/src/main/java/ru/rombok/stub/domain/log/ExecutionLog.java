@@ -3,9 +3,7 @@ package ru.rombok.stub.domain.log;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import ru.rombok.stub.domain.DomainObject;
 
 import java.time.Instant;
@@ -17,6 +15,8 @@ import java.time.Instant;
 @Setter
 @ToString
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class ExecutionLog extends DomainObject {
     /**
      * Is scenario executed successfully

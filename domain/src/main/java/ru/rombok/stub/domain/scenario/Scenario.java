@@ -1,5 +1,8 @@
 package ru.rombok.stub.domain.scenario;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +11,6 @@ import ru.rombok.stub.domain.DomainObject;
 import ru.rombok.stub.domain.log.ExecutionLog;
 import ru.rombok.stub.domain.var.ScenarioVariable;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,6 +21,11 @@ import java.util.UUID;
 @Setter
 @ToString
 @Entity
+@JsonTypeInfo(property = "type", use = JsonTypeInfo.Id.NAME)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = HttpScenario.class, name = "HTTP"),
+    @JsonSubTypes.Type(value = Scenario.class, name = "Default")
+})
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Scenario extends DomainObject {
     /**
@@ -47,7 +54,8 @@ public class Scenario extends DomainObject {
      * will be activated. Only one scenario can be
      * set to default
      */
-    private boolean isDefault;
+    @JsonProperty(value = "isDefault")
+    private Boolean isDefault;
 
     /**
      * Scenario variables
@@ -65,7 +73,7 @@ public class Scenario extends DomainObject {
 
     public void setVariables(List<ScenarioVariable> variables) {
         if (this.variables == null || variables == null) {
-            this.variables = new ArrayList<>();
+            this.variables = variables;
         } else {
             this.variables.clear();
             this.variables.addAll(variables);
@@ -74,7 +82,7 @@ public class Scenario extends DomainObject {
 
     public void setLogs(List<ExecutionLog> logs) {
         if (this.logs == null || logs == null) {
-            this.logs = new ArrayList<>();
+            this.logs = logs;
         } else {
             this.logs.clear();
             this.logs.addAll(logs);

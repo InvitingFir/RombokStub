@@ -16,7 +16,11 @@ public class ScenarioMergingException extends RuntimeException {
     // = Factory methods
     // ===================================================================================================================
 
-    public static ScenarioMergingException getFieldValue(UUID scenarioUuid, Exception e) {
-        return new ScenarioMergingException(scenarioUuid, "Failed to get field values", e);
+    public static ScenarioMergingException invokeGetter(UUID scenarioUuid, Exception e) {
+        return new ScenarioMergingException(scenarioUuid, "Failed to invoke getter", e);
+    }
+
+    public static ScenarioMergingException invokeGetter(UUID scenarioUuid) {
+        return invokeGetter(scenarioUuid, null);
     }
 }
