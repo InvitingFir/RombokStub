@@ -6,12 +6,12 @@ import org.springframework.stereotype.Component;
 import ru.rombok.stub.api.scenario.update.ScenarioMergingException;
 import ru.rombok.stub.domain.scenario.Scenario;
 
+import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
 
 import static java.lang.Character.toLowerCase;
 
@@ -33,17 +33,13 @@ public class ScenarioMerger {
     // ===================================================================================================================
 
     private String[] getNullProperties(Scenario scenario) {
-        return Arrays.stream(scenario.getClass().getMethods())
-            .flatMap(getVoidGetter(scenario))
+        Predicate<Method> isVoidGetter = mtd -> executeGetter(mtd, scenario) == null;
+        return Arrays.stream(BeanUtils.getPropertyDescriptors(scenario.getClass()))
+            .map(PropertyDescriptor::getReadMethod)
+            .filter(isVoidGetter)
             .map(Method::getName)
             .map(getterToProperty())
             .toArray(String[]::new);
-    }
-
-    private Function<Method, Stream<Method>> getVoidGetter(Scenario scenario) {
-        return method -> Stream.of(method)
-            .filter(mtd -> mtd.getName().startsWith(GETTER_PREFIX))
-            .filter(mtd -> executeGetter(mtd, scenario) == null);
     }
 
     private Object executeGetter(Method method, Scenario scenario) {
