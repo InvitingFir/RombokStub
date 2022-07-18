@@ -12,6 +12,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
 import static java.lang.Character.toLowerCase;
 
@@ -32,13 +33,18 @@ public class ScenarioMerger {
     // = Implementation
     // ===================================================================================================================
 
+    private void assertIsNotNull(Object o) {
+        if (o == null) {
+            throw new IllegalArgumentException("Scenario merging arguments must not be null");
+        }
+    }
+
     private String[] getNullProperties(Scenario scenario) {
-        Predicate<Method> isVoidGetter = mtd -> executeGetter(mtd, scenario) == null;
-        return Arrays.stream(BeanUtils.getPropertyDescriptors(scenario.getClass()))
-            .map(PropertyDescriptor::getReadMethod)
-            .filter(isVoidGetter)
+        Predicate<Method> returnsVoid = mtd -> executeGetter(mtd, scenario) == null;
+        return gettersFor(scenario)
+            .filter(returnsVoid)
             .map(Method::getName)
-            .map(getterToProperty())
+            .map(toPropertyName())
             .toArray(String[]::new);
     }
 
@@ -47,26 +53,25 @@ public class ScenarioMerger {
             if (method.canAccess(scenario)) {
                 return method.invoke(scenario);
             } else {
-                throw ScenarioMergingException.invokeGetter(scenario.getUuid());
+                throw ScenarioMergingException.forGetterInvocation(scenario.getUuid());
             }
         } catch (IllegalAccessException | InvocationTargetException e) {
             log.error("Failed to get field values for scenario with uuid = {}", scenario.getUuid());
-            throw ScenarioMergingException.invokeGetter(scenario.getUuid(), e);
+            throw ScenarioMergingException.forGetterInvocation(scenario.getUuid(), e);
         }
     }
 
-    private UnaryOperator<String> getterToProperty() {
+    private Stream<Method> gettersFor(Scenario scenario) {
+        return Arrays.stream(BeanUtils.getPropertyDescriptors(scenario.getClass()))
+            .map(PropertyDescriptor::getReadMethod);
+    }
+
+    private UnaryOperator<String> toPropertyName() {
         return name -> {
             String get = name.replaceFirst(GETTER_PREFIX, "");
             char[] chars = get.toCharArray();
             chars[0] = toLowerCase(chars[0]);
             return new String(chars);
         };
-    }
-
-    private void assertIsNotNull(Object o) {
-        if (o == null) {
-            throw new IllegalArgumentException("Scenario merging arguments must not be null");
-        }
     }
 }
