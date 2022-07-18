@@ -8,8 +8,9 @@ import util.TestObjectProvider;
 import static util.RombokAssertions.assertEqualsToFile;
 
 class ScenarioMergerTest {
-    private ScenarioMerger scenarioMerger;
     private TestObjectProvider objectProvider;
+
+    private ScenarioMerger scenarioMerger;
 
     @BeforeEach
     void setup() {

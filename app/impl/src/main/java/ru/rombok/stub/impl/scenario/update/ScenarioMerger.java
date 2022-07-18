@@ -52,9 +52,8 @@ public class ScenarioMerger {
         try {
             if (method.canAccess(scenario)) {
                 return method.invoke(scenario);
-            } else {
-                throw ScenarioMergingException.forGetterInvocation(scenario.getUuid());
             }
+            throw ScenarioMergingException.forGetterInvocation(scenario.getUuid());
         } catch (IllegalAccessException | InvocationTargetException e) {
             log.error("Failed to get field values for scenario with uuid = {}", scenario.getUuid());
             throw ScenarioMergingException.forGetterInvocation(scenario.getUuid(), e);
