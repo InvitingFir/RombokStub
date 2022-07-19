@@ -14,9 +14,9 @@
     <name>RombokStub - Adapter</name>
 
     <modules>
-        <module>front</module>
         <module>graphql</module>
         <module>http-stub</module>
+        <module>persistence</module>
     </modules>
 
     <dependencies>
