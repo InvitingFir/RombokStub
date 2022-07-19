@@ -1,0 +1,8 @@
+input ScenarioRequest{
+  scenarioType: String!
+  name: String!
+  predicate: String
+  action: String!
+  isDefault: Boolean
+  url: String!
+}

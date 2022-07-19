@@ -1,0 +1,4 @@
+input ScenarioVariableRequest {
+  name: String
+  value: String
+}

@@ -1,0 +1,8 @@
+input ServiceRequest{
+  serviceType: String!
+  name: String!
+  enabled: Boolean
+  inputTopic: String
+  outputTopic: String
+  brokerAddress: String
+}

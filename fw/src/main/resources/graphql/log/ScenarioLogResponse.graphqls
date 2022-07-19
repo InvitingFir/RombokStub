@@ -1,0 +1,8 @@
+type ScenarioLogResponse{
+  success: Boolean
+  errorType: ErrorType
+  startDateTime: String
+  endDateTime: String
+  source: String
+  destination: String
+}
