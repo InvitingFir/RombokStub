@@ -1,15 +1,15 @@
 type Query{
   #Scenario
-  getScenario(scenarioUuid:String): ScenarioResponse
-  getScenario(serviceUuid: String): [ScenarioResponse]
+  getScenario(scenarioUuid:String!): ScenarioResponse
+  getAllScenarios(serviceUuid: String!): [ScenarioResponse]
 
   #Service
-  getService(uuid: String) : ServiceResponse
-  getService : [ServiceResponse]
+  getService(uuid: String!) : ServiceResponse
+  getAllServices : [ServiceResponse]
 
   #Variables
-  getVariables(scenarioUuid: String) : [ScenarioVariableResponse]
+  getVariables(scenarioUuid: String!) : [ScenarioVariableResponse]
 
   #Logs
-  getLogs(scenarioUuid: String): [ScenarioLogResponse]
+  getLogs(scenarioUuid: String!): [ScenarioLogResponse]
 }

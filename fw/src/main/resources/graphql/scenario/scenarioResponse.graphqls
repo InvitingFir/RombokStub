@@ -1,4 +1,4 @@
-type DefaultScenarioResponse{
+interface ScenarioResponse{
   scenarioType: String
   name: String
   uuid: ID
@@ -8,7 +8,17 @@ type DefaultScenarioResponse{
   variables: [ScenarioVariableResponse]
 }
 
-type HttpScenarioResponse{
+type DefaultScenarioResponse implements ScenarioResponse{
+  scenarioType: String
+  name: String
+  uuid: ID
+  predicate: String
+  action: String
+  isDefault: Boolean
+  variables: [ScenarioVariableResponse]
+}
+
+type HttpScenarioResponse implements ScenarioResponse{
   scenarioType: String
   name: String
   uuid: ID
@@ -18,5 +28,3 @@ type HttpScenarioResponse{
   variables: [ScenarioVariableResponse]
   url: String
 }
-
-union ScenarioResponse = DefaultScenarioResponse | HttpScenarioResponse

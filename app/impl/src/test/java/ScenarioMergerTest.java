@@ -3,9 +3,9 @@ import org.junit.jupiter.api.Test;
 import ru.rombok.stub.domain.scenario.HttpScenario;
 import ru.rombok.stub.domain.scenario.Scenario;
 import ru.rombok.stub.impl.scenario.update.ScenarioMerger;
-import util.TestObjectProvider;
+import ru.rombok.stub.test.TestObjectProvider;
 
-import static util.RombokAssertions.assertEqualsToFile;
+import static ru.rombok.stub.test.RombokAssertions.assertEqualsToFile;
 
 class ScenarioMergerTest {
     private TestObjectProvider objectProvider;

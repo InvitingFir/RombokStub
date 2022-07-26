@@ -29,6 +29,15 @@
             <artifactId>modelmapper</artifactId>
             <version>3.1.0</version>
         </dependency>
+        <dependency>
+            <groupId>ru.rombokstub</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ru.rombokstub</groupId>
+            <artifactId>test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>

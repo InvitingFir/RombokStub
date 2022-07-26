@@ -1,7 +1,8 @@
-package util;
+package ru.rombok.stub.test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.NoArgsConstructor;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -10,8 +11,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.function.Function;
 
+import static lombok.AccessLevel.PRIVATE;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@NoArgsConstructor(access = PRIVATE)
 public class RombokAssertions {
     public static final ObjectMapper mapper;
 

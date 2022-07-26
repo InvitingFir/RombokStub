@@ -1,4 +1,4 @@
-package util;
+package ru.rombok.stub.test;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -18,7 +18,7 @@ public class TestObjectMapper extends ObjectMapper {
         this.registerModule(new JavaTimeModule());
         this.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         this.setDateFormat(new SimpleDateFormat("MM-dd-yyyy"));
-        this.configure(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY, true);
+        this.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
         this.enable(SerializationFeature.INDENT_OUTPUT);
         this.setDefaultPrettyPrinter(new MyDefaultPrettyPrinter());
     }

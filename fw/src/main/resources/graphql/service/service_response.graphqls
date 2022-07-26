@@ -1,4 +1,4 @@
-type HttpServiceResponse{
+interface ServiceResponse{
   serviceType: String
   uuid: ID
   name: String
@@ -6,7 +6,15 @@ type HttpServiceResponse{
   scenarios: [ScenarioResponse]
 }
 
-type KafkaServiceResponse{
+type HttpServiceResponse implements ServiceResponse{
+  serviceType: String
+  uuid: ID
+  name: String
+  enabled: Boolean
+  scenarios: [ScenarioResponse]
+}
+
+type KafkaServiceResponse implements ServiceResponse{
   serviceType: String
   uuid: ID
   name: String
@@ -16,5 +24,3 @@ type KafkaServiceResponse{
   outputTopic: String
   brokerAddress: String
 }
-
-union ServiceResponse = HttpServiceResponse | KafkaServiceResponse

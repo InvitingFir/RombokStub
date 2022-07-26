@@ -14,7 +14,7 @@ public class CreateScenarioUseCase implements CreateScenarioInbound {
     private final ScenarioRepository repository;
 
     @Override
-    public Scenario execute(Scenario scenario) {
+    public Scenario execute(Scenario scenario, UUID serviceUuid) {
         scenario.setUuid(UUID.randomUUID());
         return repository.save(scenario);
     }
