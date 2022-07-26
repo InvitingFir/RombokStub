@@ -13,10 +13,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.modelmapper.convention.MatchingStrategies.STRICT;
+import static ru.rombok.stub.graphql.util.FunctionalUtils.first;
 
 public class ScenarioMapper {
-    private final Provider<Scenario> forRequest = ctx ->
-        ScenarioType.getScenarioForTypeName(((ScenarioRequest) ctx.getSource()).getScenarioType());
+    private final Provider<Scenario> forRequest = request -> first(Provider.ProvisionRequest<Scenario>::getSource)
+        .andThen(ScenarioRequest.class::cast)
+        .andThen(ScenarioRequest::getScenarioType)
+        .andThen(ScenarioType::getScenarioForTypeName)
+        .apply(request);
     private final ModelMapper mapper;
 
     public ScenarioMapper() {
