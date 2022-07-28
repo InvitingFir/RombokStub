@@ -13,7 +13,7 @@ import java.util.List;
 import static ru.rombok.stub.test.RombokAssertions.assertEqualsToFile;
 
 class ScenarioMapperTest {
-    public static final TypeReference<List<Scenario>> SCENARIO_LIST_REFERENCE = new TypeReference<>() {
+    private static final TypeReference<List<Scenario>> SCENARIO_LIST_REFERENCE = new TypeReference<>() {
     };
     private TestObjectProvider objectProvider;
 

@@ -1,0 +1,7 @@
+{
+  "type": "HTTP",
+  "action": "action",
+  "isDefault": false,
+  "name": "name",
+  "predicate": "predicate"
+}

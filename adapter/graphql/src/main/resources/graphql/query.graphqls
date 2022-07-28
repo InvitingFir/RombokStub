@@ -1,0 +1,12 @@
+type Query{
+  #Scenario
+  getScenario(scenarioUuid:String!): ScenarioResponse
+  getAllScenarios(serviceUuid: String!): [ScenarioResponse]
+
+  #  #Service
+  #  getService(uuid: String!) : ServiceResponse
+  #  getAllServices : [ServiceResponse]
+  #
+  #  #Logs
+  #  getLogs(scenarioUuid: String!): [ScenarioLogResponse]
+}

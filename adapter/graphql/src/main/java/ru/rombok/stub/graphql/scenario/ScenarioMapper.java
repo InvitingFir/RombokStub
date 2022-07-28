@@ -2,6 +2,7 @@ package ru.rombok.stub.graphql.scenario;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.Provider;
+import org.springframework.stereotype.Component;
 import ru.rombok.stub.domain.scenario.HttpScenario;
 import ru.rombok.stub.domain.scenario.Scenario;
 import ru.rombok.stub.graphql.scenario.request.ScenarioRequest;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 import static org.modelmapper.convention.MatchingStrategies.STRICT;
 import static ru.rombok.stub.graphql.util.FunctionalUtils.first;
 
+@Component
 public class ScenarioMapper {
     private final Provider<Scenario> forRequest = request -> first(Provider.ProvisionRequest<Scenario>::getSource)
         .andThen(ScenarioRequest.class::cast)
@@ -28,8 +30,10 @@ public class ScenarioMapper {
         mapper.getConfiguration().setMatchingStrategy(STRICT);
         mapper.typeMap(ScenarioRequest.class, Scenario.class)
             .setProvider(forRequest);
-        mapper.typeMap(ScenarioRequest.class, HttpScenario.class)
-            .includeBase(ScenarioRequest.class, Scenario.class);
+        mapper.typeMap(Scenario.class, ScenarioResponse.class)
+            .addMapping(ScenarioType::getTypeNameForScenario, ScenarioResponse::setScenarioType);
+        mapper.typeMap(HttpScenario.class, ScenarioResponse.class)
+            .addMapping(ScenarioType::getTypeNameForScenario, ScenarioResponse::setScenarioType);
     }
 
     public ScenarioResponse toDto(Scenario scenario) {

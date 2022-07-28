@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>parent</artifactId>
-        <groupId>ru.rombokstub</groupId>
+        <groupId>ru.rombok.stub</groupId>
         <version>CURRENT</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
@@ -30,11 +30,11 @@
             <version>3.1.0</version>
         </dependency>
         <dependency>
-            <groupId>ru.rombokstub</groupId>
+            <groupId>ru.rombok.stub</groupId>
             <artifactId>api</artifactId>
         </dependency>
         <dependency>
-            <groupId>ru.rombokstub</groupId>
+            <groupId>ru.rombok.stub</groupId>
             <artifactId>test</artifactId>
             <scope>test</scope>
         </dependency>

@@ -1,0 +1,8 @@
+{
+  "scenarioType": "HTTP",
+  "action": "action",
+  "isDefault": false,
+  "name": "name",
+  "predicate": "predicate",
+  "url": "url"
+}

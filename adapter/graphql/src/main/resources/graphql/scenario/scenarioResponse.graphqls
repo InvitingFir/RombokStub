@@ -1,0 +1,10 @@
+type ScenarioResponse{
+  scenarioType: String
+  name: String
+  uuid: ID
+  predicate: String
+  action: String
+  isDefault: Boolean
+  variables: [ScenarioVariableResponse]
+  url: String
+}

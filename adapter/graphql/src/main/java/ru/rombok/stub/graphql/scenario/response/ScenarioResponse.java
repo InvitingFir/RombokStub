@@ -12,5 +12,7 @@ public class ScenarioResponse {
     private String predicate;
     private String action;
     private Boolean isDefault;
+    private String url;
+    private String uuid;
     private List<ScenarioVariableResponse> variables;
 }

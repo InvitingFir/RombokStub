@@ -1,0 +1,7 @@
+{
+  "type": "Default",
+  "action": "action",
+  "isDefault": false,
+  "name": "name",
+  "predicate": "predicate"
+}

@@ -13,8 +13,8 @@ public enum ScenarioType {
     DEFAULT("default", Scenario::new),
     HTTP("HTTP", HttpScenario::new);
 
-    String name;
-    Supplier<Scenario> scenarioProvider;
+    private final String name;
+    private final Supplier<Scenario> scenarioProvider;
 
     ScenarioType(String name, Supplier<Scenario> supplier) {
         this.name = name;
@@ -28,5 +28,13 @@ public enum ScenarioType {
             .map(Supplier::get)
             .findAny()
             .orElseThrow(() -> new IllegalArgumentException(String.format("Scenario with type %s is not supported", name)));
+    }
+
+    public static <T extends Scenario> String getTypeNameForScenario(T scenario) {
+        if (scenario instanceof HttpScenario) {
+            return HTTP.getName();
+        } else {
+            return DEFAULT.getName();
+        }
     }
 }
