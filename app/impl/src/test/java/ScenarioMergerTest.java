@@ -24,6 +24,7 @@ class ScenarioMergerTest {
         Scenario scenarioUpdate = new HttpScenario();
         scenarioUpdate.setPredicate("updatedPredicate");
         scenarioUpdate.setIsDefault(true);
+        scenarioUpdate.setVariables(null);
 
         Scenario actualScenario = scenarioMerger.merge(rootScenario, scenarioUpdate);
 

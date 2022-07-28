@@ -1,6 +1,9 @@
 package ru.rombok.stub.graphql.scenario.request;
 
 import lombok.Data;
+import ru.rombok.stub.graphql.variable.request.ScenarioVariableRequest;
+
+import java.util.List;
 
 @Data
 public class ScenarioRequest {
@@ -10,4 +13,5 @@ public class ScenarioRequest {
     private String action;
     private Boolean isDefault;
     private String url;
+    private List<ScenarioVariableRequest> variables;
 }

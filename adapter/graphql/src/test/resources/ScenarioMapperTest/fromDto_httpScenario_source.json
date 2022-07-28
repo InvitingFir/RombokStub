@@ -4,5 +4,15 @@
   "isDefault": false,
   "name": "name",
   "predicate": "predicate",
-  "url": "url"
+  "url": "url",
+  "variables": [
+    {
+      "name": "var1",
+      "value": "value"
+    },
+    {
+      "name": "var2",
+      "value": "value"
+    }
+  ]
 }
