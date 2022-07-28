@@ -12,7 +12,6 @@ import ru.rombok.stub.graphql.scenario.request.ScenarioRequest;
 import ru.rombok.stub.graphql.scenario.response.ScenarioResponse;
 import ru.rombok.stub.graphql.util.UUIDPattern;
 
-import javax.validation.Valid;
 import java.util.UUID;
 import java.util.function.Function;
 
@@ -27,7 +26,7 @@ public class ScenarioMutationResolver implements GraphQLMutationResolver {
     private final DeleteScenarioInbound deleteScenario;
     private final ScenarioMapper mapper;
 
-    public ScenarioResponse createScenario(@Valid ScenarioRequest params, @UUIDPattern String serviceUuid) {
+    public ScenarioResponse createScenario(ScenarioRequest params, @UUIDPattern String serviceUuid) {
         Function<UUID, Scenario> createScenarioForService = uuid -> first(mapper::fromDto)
             .andThen(scenario -> createScenario.execute(scenario, uuid))
             .apply(params);
@@ -38,7 +37,7 @@ public class ScenarioMutationResolver implements GraphQLMutationResolver {
             .apply(serviceUuid);
     }
 
-    public ScenarioResponse updateScenario(@Valid ScenarioRequest updates, @UUIDPattern String scenarioUuid) {
+    public ScenarioResponse updateScenario(ScenarioRequest updates, @UUIDPattern String scenarioUuid) {
         Function<UUID, Scenario> updateScenarioWithUuid = uuid -> first(mapper::fromDto)
             .andThen(scenario -> updateScenario.execute(uuid, scenario))
             .apply(updates);
