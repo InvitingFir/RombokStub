@@ -13,9 +13,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({FIELD, PARAMETER})
 @Constraint(validatedBy = {})
 @Retention(RUNTIME)
-@Pattern(regexp = "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$")
+@Pattern(regexp = "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", message = "must have UUID format")
 public @interface UUIDPattern {
-    String message() default "{invalid.uuid}";
+    String message() default "must be UUID";
 
     Class<?>[] groups() default {};
 

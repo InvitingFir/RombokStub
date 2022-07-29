@@ -39,6 +39,7 @@
         <maven.surefire.version>3.0.0-M7</maven.surefire.version>
         <graphql.tools.version>5.2.4</graphql.tools.version>
         <graphiql.version>5.0.2</graphiql.version>
+        <tomcat.version>9.0.48</tomcat.version>
     </properties>
 
     <dependencyManagement>
@@ -189,6 +190,10 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
 
