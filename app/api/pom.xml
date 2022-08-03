@@ -11,5 +11,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>api</artifactId>
     <name>RombokStub - API</name>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
 
 </project>

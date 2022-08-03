@@ -1,6 +1,6 @@
 package ru.rombok.stub.graphql.log;
 
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

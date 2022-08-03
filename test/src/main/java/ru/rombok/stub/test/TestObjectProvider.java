@@ -8,7 +8,7 @@ import java.io.InputStream;
 
 @Getter
 public class TestObjectProvider {
-    private final ObjectMapper mapper;
+    protected ObjectMapper mapper;
 
     public TestObjectProvider() {
         this.mapper = new TestObjectMapper();

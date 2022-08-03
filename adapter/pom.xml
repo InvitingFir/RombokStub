@@ -13,6 +13,10 @@
     <packaging>pom</packaging>
     <name>RombokStub - Adapter</name>
 
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+
     <modules>
         <module>graphql</module>
         <module>http-stub</module>

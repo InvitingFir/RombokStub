@@ -1,0 +1,14 @@
+query getScenario($uuid: ID){
+  getScenario(scenarioUuid: $uuid){
+    ScenarioResponse{
+      scenarioType
+      name
+      uuid
+      predicate
+      action
+      isDefault
+      variables
+      url
+    }
+  }
+}

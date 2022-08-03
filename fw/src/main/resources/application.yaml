@@ -6,3 +6,8 @@ spring:
     password: ${DATASOURCE_PASSWORD}
   flyway:
     validate-migration-naming: true
+graphql:
+  servlet:
+    exception-handlers-enabled: true
+  graphiql:
+    enabled: true

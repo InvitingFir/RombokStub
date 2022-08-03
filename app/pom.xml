@@ -12,6 +12,9 @@
     <artifactId>app</artifactId>
     <packaging>pom</packaging>
     <name>RombokStub - App</name>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
 
     <modules>
         <module>api</module>

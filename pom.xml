@@ -12,6 +12,9 @@
     <artifactId>rombok-stub</artifactId>
     <packaging>pom</packaging>
     <name>RombokStub - POM</name>
+    <properties>
+        <java.version>17</java.version>
+    </properties>
 
     <modules>
         <module>fw</module>
