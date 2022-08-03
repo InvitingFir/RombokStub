@@ -11,8 +11,8 @@ import static java.lang.String.format;
 public class FrameworkTestObjectProvider extends TestObjectProvider {
     private final ApplicationContext context;
 
-    public FrameworkTestObjectProvider(ObjectMapper mapper, ApplicationContext context) {
-        this.mapper = mapper;
+    public FrameworkTestObjectProvider(ApplicationContext context, ObjectMapper mapper) {
+        super(mapper);
         this.context = context;
     }
 
@@ -20,7 +20,7 @@ public class FrameworkTestObjectProvider extends TestObjectProvider {
         try {
             return context.getBean(clazz);
         } catch (Exception e) {
-            throw new IllegalArgumentException(format("No object of class %s is provided in context", clazz));
+            throw new IllegalArgumentException(format("No object of class %s is provided in context", clazz), e);
         }
     }
 }

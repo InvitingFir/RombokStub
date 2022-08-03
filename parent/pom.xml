@@ -20,7 +20,7 @@
         <rombokstub.version>0.0.1</rombokstub.version>
         <lombok.version>1.18.24</lombok.version>
         <springfox.swagger.version>2.9.2</springfox.swagger.version>
-        <mockito.all.version>1.10.19</mockito.all.version>
+        <mockito.core.version>3.9.0</mockito.core.version>
         <spring.jpa.version>2.5.14</spring.jpa.version>
         <spring.security.version>2.5.14</spring.security.version>
         <jackson.databind.version>2.13.3</jackson.databind.version>
@@ -136,8 +136,8 @@
             <!-- Test -->
             <dependency>
                 <groupId>org.mockito</groupId>
-                <artifactId>mockito-all</artifactId>
-                <version>${mockito.all.version}</version>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.core.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>

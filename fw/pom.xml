@@ -15,6 +15,8 @@
     <properties>
         <flyway.core.version>8.5.13</flyway.core.version>
         <postgresql.version>42.4.0</postgresql.version>
+        <testcontainers.postgres.version>1.17.3</testcontainers.postgres.version>
+        <testcontainers.junit.version>1.17.3</testcontainers.junit.version>
         <java.version>17</java.version>
     </properties>
 
@@ -61,6 +63,23 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.graphql-java-kickstart</groupId>
+            <artifactId>graphql-spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${testcontainers.postgres.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${testcontainers.junit.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <!-- Data -->

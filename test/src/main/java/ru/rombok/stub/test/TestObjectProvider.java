@@ -11,7 +11,11 @@ public class TestObjectProvider {
     protected ObjectMapper mapper;
 
     public TestObjectProvider() {
-        this.mapper = new TestObjectMapper();
+        this(new TestObjectMapper());
+    }
+
+    public TestObjectProvider(ObjectMapper mapper) {
+        this.mapper = mapper;
     }
 
     public <T> T fromFile(String path, Class<T> clazz) {
