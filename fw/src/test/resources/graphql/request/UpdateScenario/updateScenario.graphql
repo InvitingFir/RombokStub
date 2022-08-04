@@ -1,0 +1,15 @@
+mutation updateScenario($uuid: String!, $updates: ScenarioRequest!){
+  updateScenario(scenarioUuid: $uuid, updates: $updates){
+    scenarioType
+    name
+    uuid
+    predicate
+    action
+    isDefault
+    variables {
+      name
+      value
+    }
+    url
+  }
+}

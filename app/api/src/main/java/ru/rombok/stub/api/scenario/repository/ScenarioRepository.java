@@ -12,7 +12,7 @@ public interface ScenarioRepository {
 
     Optional<Scenario> get(UUID scenarioUuid);
 
-    Scenario delete(UUID scenarioUuid);
+    Optional<Scenario> delete(UUID scenarioUuid);
 
     List<Scenario> getAllWithServiceUuid(UUID serviceUuid);
 }

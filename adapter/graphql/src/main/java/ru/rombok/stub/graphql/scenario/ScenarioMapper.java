@@ -28,8 +28,6 @@ public class ScenarioMapper {
     public ScenarioMapper() {
         mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(STRICT);
-        mapper.typeMap(ScenarioRequest.class, Scenario.class)
-            .setProvider(forRequest);
         mapper.typeMap(Scenario.class, ScenarioResponse.class)
             .addMapping(ScenarioType::getTypeNameForScenario, ScenarioResponse::setScenarioType);
         mapper.typeMap(HttpScenario.class, ScenarioResponse.class)
@@ -56,7 +54,11 @@ public class ScenarioMapper {
 
     public Scenario fromDto(ScenarioRequest request) {
         try {
-            return mapper.map(request, Scenario.class);
+            Scenario scenario = first(ScenarioRequest::getScenarioType)
+                .andThen(ScenarioType::getScenarioForTypeName)
+                .apply(request);
+            mapper.map(request, scenario);
+            return scenario;
         } catch (Exception e) {
             throw AdapterMappingException.forObject(Scenario.class, ScenarioResponse.class, e);
         }

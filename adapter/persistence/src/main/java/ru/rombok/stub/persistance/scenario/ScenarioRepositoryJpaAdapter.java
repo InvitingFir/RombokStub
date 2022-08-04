@@ -22,8 +22,8 @@ public class ScenarioRepositoryJpaAdapter implements ScenarioRepository {
     }
 
     @Override
-    public Scenario delete(UUID scenarioUuid) {
-        return null;
+    public Optional<Scenario> delete(UUID scenarioUuid) {
+        return Optional.empty();
     }
 
     @Override

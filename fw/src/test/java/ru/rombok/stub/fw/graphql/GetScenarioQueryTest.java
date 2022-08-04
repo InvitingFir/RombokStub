@@ -5,6 +5,7 @@ import com.graphql.spring.boot.test.GraphQLResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.rombok.stub.api.scenario.repository.ScenarioRepository;
+import ru.rombok.stub.domain.scenario.HttpScenario;
 import ru.rombok.stub.domain.scenario.Scenario;
 
 import java.util.Optional;
@@ -19,7 +20,7 @@ class GetScenarioQueryTest extends AbstractGraphQLTest {
 
     @Override
     public String getTestSourceName() {
-        return "ScenarioQuery";
+        return "GetScenario";
     }
 
     @Test
@@ -27,7 +28,7 @@ class GetScenarioQueryTest extends AbstractGraphQLTest {
         doReturn(Optional.of(provider.forClass(Scenario.class))).when(repository).get(any());
         ObjectNode variables = provider.fromFile(getVariableSourcePath("getScenario.json"), ObjectNode.class);
 
-        GraphQLResponse getScenario = testTemplate.perform(getRequestSourcePath("ScenarioQueryTest.graphql"), "getScenario", variables);
+        GraphQLResponse getScenario = testTemplate.perform(getRequestSourcePath("getScenario.graphql"), "getScenario", variables);
 
         getScenario
             .assertThatErrorsField().isNotPresent()
@@ -36,10 +37,23 @@ class GetScenarioQueryTest extends AbstractGraphQLTest {
     }
 
     @Test
+    void getScenario_httpScenario() throws Exception {
+        doReturn(Optional.of(provider.forClass(HttpScenario.class))).when(repository).get(any());
+        ObjectNode variables = provider.fromFile(getVariableSourcePath("getScenario.json"), ObjectNode.class);
+
+        GraphQLResponse getScenario = testTemplate.perform(getRequestSourcePath("getScenario.graphql"), "getScenario", variables);
+
+        getScenario
+            .assertThatErrorsField().isNotPresent()
+            .and()
+            .assertThatJsonContent().isEqualToJson(getExpectedSourcePath("getScenario_httpScenario.json"), this.getClass());
+    }
+
+    @Test
     void getScenario_uuidValidationError() throws Exception {
         ObjectNode variables = provider.fromFile(getVariableSourcePath("getScenario_uuidValidationError.json"), ObjectNode.class);
 
-        GraphQLResponse getScenario = testTemplate.perform(getRequestSourcePath("ScenarioQueryTest.graphql"), "getScenario", variables);
+        GraphQLResponse getScenario = testTemplate.perform(getRequestSourcePath("getScenario.graphql"), "getScenario", variables);
 
         getScenario
             .assertThatListOfErrors()
@@ -51,7 +65,7 @@ class GetScenarioQueryTest extends AbstractGraphQLTest {
         doReturn(Optional.empty()).when(repository).get(any());
         ObjectNode variables = provider.fromFile(getVariableSourcePath("getScenario.json"), ObjectNode.class);
 
-        GraphQLResponse getScenario = testTemplate.perform(getRequestSourcePath("ScenarioQueryTest.graphql"), "getScenario", variables);
+        GraphQLResponse getScenario = testTemplate.perform(getRequestSourcePath("getScenario.graphql"), "getScenario", variables);
 
         getScenario
             .assertThatListOfErrors()

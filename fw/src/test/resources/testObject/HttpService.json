@@ -1,0 +1,7 @@
+{
+  "type": "HTTP",
+  "name": "service",
+  "uuid": "uuid",
+  "enabled": true,
+  "scenarios": []
+}

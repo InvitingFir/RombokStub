@@ -2,13 +2,13 @@
 type ScenarioResponse{
 
   #Type of scenario (HTTP/Kafka/default/etc.)
-  scenarioType: String
+  scenarioType: String!
 
   #Scenario name. Used for user output
   name: String
 
   #uuid is used for scenario identification
-  uuid: ID
+  uuid: ID!
 
   #Condition that activates scenario
   predicate: String
