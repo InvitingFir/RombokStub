@@ -1,0 +1,15 @@
+type Query{
+
+  #Query scenario params with {scenarioUuid}
+  getScenario(scenarioUuid:String!): ScenarioResponse
+
+  #Query all scenarios for service with {serviceUuid}
+  getAllScenarios(serviceUuid: String!): [ScenarioResponse]
+
+  #  #Service
+  #  getService(uuid: String!) : ServiceResponse
+  #  getAllServices : [ServiceResponse]
+  #
+  #  #Logs
+  #  getLogs(scenarioUuid: String!): [ScenarioLogResponse]
+}

@@ -5,31 +5,32 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.0</version>
+        <version>2.5.14</version>
         <relativePath/>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>ru.rombokstub</groupId>
+    <groupId>ru.rombok.stub</groupId>
     <artifactId>parent</artifactId>
     <version>CURRENT</version>
     <packaging>pom</packaging>
     <name>RombokStub - Parent</name>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <rombokstub.version>0.0.1</rombokstub.version>
         <lombok.version>1.18.24</lombok.version>
-        <springfox.swagger.version>3.0.0</springfox.swagger.version>
-        <mockito.core.version>4.6.1</mockito.core.version>
-        <spring.jpa.version>2.7.1</spring.jpa.version>
-        <spring.security.version>2.7.1</spring.security.version>
+        <springfox.swagger.version>2.9.2</springfox.swagger.version>
+        <mockito.core.version>3.9.0</mockito.core.version>
+        <spring.jpa.version>2.5.14</spring.jpa.version>
+        <spring.security.version>2.5.14</spring.security.version>
         <jackson.databind.version>2.13.3</jackson.databind.version>
         <jackson.annotations.version>2.13.3</jackson.annotations.version>
         <jackson.core.version>2.13.3</jackson.core.version>
-        <spring.graphql.version>5.0.2</spring.graphql.version>
+        <spring.graphql.version>12.0.0</spring.graphql.version>
         <spring.tx.version>5.3.21</spring.tx.version>
         <spring.beanUtils.version>1.9.4</spring.beanUtils.version>
-        <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <junit.jupiter.version>5.7.2</junit.jupiter.version>
+        <versions.bytebuddy>1.12.9</versions.bytebuddy>
         <jackson.datatype.version>2.13.3</jackson.datatype.version>
         <assertj.version>3.23.1</assertj.version>
         <frontend-maven-plugin.version>1.10.0</frontend-maven-plugin.version>
@@ -37,7 +38,10 @@
         <frontend-maven-plugin.npmVersion>6.14.8</frontend-maven-plugin.npmVersion>
         <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
         <maven.surefire.version>3.0.0-M7</maven.surefire.version>
-        <graphql.tools.version>5.2.4</graphql.tools.version>
+        <graphql.tools.version>12.1.0</graphql.tools.version>
+        <graphiql.version>5.0.2</graphiql.version>
+        <tomcat.version>9.0.48</tomcat.version>
+        <spring.graphql.test.version>12.0.0</spring.graphql.test.version>
     </properties>
 
     <dependencyManagement>
@@ -55,11 +59,6 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>app</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
                 <artifactId>api</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -70,17 +69,22 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>adapter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
                 <artifactId>http-stub</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>rest</artifactId>
+                <artifactId>graphql</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>persistence</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>test</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -117,14 +121,9 @@
 
             <!-- GraphQl -->
             <dependency>
-                <groupId>com.graphql-java</groupId>
+                <groupId>com.graphql-java-kickstart</groupId>
                 <artifactId>graphql-spring-boot-starter</artifactId>
                 <version>${spring.graphql.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.graphql-java</groupId>
-                <artifactId>graphql-java-tools</artifactId>
-                <version>${graphql.tools.version}</version>
             </dependency>
 
             <!-- Util -->
@@ -132,6 +131,23 @@
                 <groupId>commons-beanutils</groupId>
                 <artifactId>commons-beanutils</artifactId>
                 <version>${spring.beanUtils.version}</version>
+            </dependency>
+
+            <!-- Test -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>${junit.jupiter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.graphql-java-kickstart</groupId>
+                <artifactId>graphql-spring-boot-starter-test</artifactId>
+                <version>${spring.graphql.test.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -146,24 +162,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
@@ -185,6 +183,10 @@
             <artifactId>jackson-core</artifactId>
             <version>${jackson.core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -194,6 +196,9 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven.surefire.version}</version>
+                    <configuration>
+                        <includes>*</includes>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -1,0 +1,26 @@
+interface ServiceResponse{
+  serviceType: String
+  uuid: ID
+  name: String
+  enabled: Boolean
+  scenarios: [ScenarioResponse]
+}
+
+type HttpServiceResponse implements ServiceResponse{
+  serviceType: String
+  uuid: ID
+  name: String
+  enabled: Boolean
+  scenarios: [ScenarioResponse]
+}
+
+type KafkaServiceResponse implements ServiceResponse{
+  serviceType: String
+  uuid: ID
+  name: String
+  enabled: Boolean
+  scenarios: [ScenarioResponse]
+  inputTopic: String
+  outputTopic: String
+  brokerAddress: String
+}

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>parent</artifactId>
-        <groupId>ru.rombokstub</groupId>
+        <groupId>ru.rombok.stub</groupId>
         <version>CURRENT</version>
         <relativePath>../parent/pom.xml</relativePath>
     </parent>
@@ -12,6 +12,10 @@
     <artifactId>adapter</artifactId>
     <packaging>pom</packaging>
     <name>RombokStub - Adapter</name>
+
+    <properties>
+        <java.version>17</java.version>
+    </properties>
 
     <modules>
         <module>graphql</module>
@@ -28,6 +32,15 @@
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
             <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.rombok.stub</groupId>
+            <artifactId>api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ru.rombok.stub</groupId>
+            <artifactId>test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

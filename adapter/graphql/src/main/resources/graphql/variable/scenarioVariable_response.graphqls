@@ -1,0 +1,4 @@
+type ScenarioVariableResponse {
+  name: String
+  value: String
+}

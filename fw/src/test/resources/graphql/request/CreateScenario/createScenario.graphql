@@ -1,0 +1,15 @@
+mutation createScenario($params: ScenarioRequest!, $uuid: String!){
+  createScenario(params: $params, serviceUuid: $uuid){
+    scenarioType
+    name
+    uuid
+    predicate
+    action
+    isDefault
+    variables {
+      name
+      value
+    }
+    url
+  }
+}

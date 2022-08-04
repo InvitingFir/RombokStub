@@ -1,0 +1,17 @@
+{
+  "type": "Default",
+  "action": "action",
+  "isDefault": false,
+  "name": "name",
+  "predicate": "predicate",
+  "variables": [
+    {
+      "name": "var1",
+      "value": "value"
+    },
+    {
+      "name": "var2",
+      "value": "value"
+    }
+  ]
+}

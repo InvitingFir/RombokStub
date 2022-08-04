@@ -1,0 +1,24 @@
+#Params, that can be used for scenario initialization/update
+input ScenarioRequest{
+
+  #Type of scenario (HTTP/Kafka/default/etc.)
+  scenarioType: String!
+
+  #Scenario name. Used for user output
+  name: String!
+
+  #Condition that activates scenario
+  predicate: String!
+
+  #Operations, that are performed on scenario condition
+  action: String!
+
+  #Scenario will be activated by default, if no scenario condition is satisfied
+  isDefault: Boolean
+
+  #Scenario URL-address (only for HTTP scenario)
+  url: String
+
+  #Variables, that can be used in scenario action & predicate
+  variables: [ScenarioVariableRequest]
+}

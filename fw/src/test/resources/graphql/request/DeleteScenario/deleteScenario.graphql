@@ -1,0 +1,15 @@
+mutation deleteScenario($uuid:String!){
+  deleteScenario(uuid: $uuid){
+    scenarioType
+    name
+    uuid
+    predicate
+    action
+    isDefault
+    variables {
+      name
+      value
+    }
+    url
+  }
+}

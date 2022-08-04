@@ -1,0 +1,15 @@
+{
+  "updates": {
+    "scenarioType": "HTTP",
+    "action": "updatedAction",
+    "isDefault": false,
+    "name": "updatedName",
+    "predicate": "updatedPredicate",
+    "url": "updatedUrl",
+    "variables": {
+      "name": "updatedName",
+      "value": "updatedValue"
+    }
+  },
+  "uuid": "serviceUuid"
+}

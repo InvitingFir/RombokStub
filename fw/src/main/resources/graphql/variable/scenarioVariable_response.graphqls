@@ -1,5 +1,0 @@
-type ScenarioVariableResponse {
-  uuid: ID
-  name: String
-  value: String
-}

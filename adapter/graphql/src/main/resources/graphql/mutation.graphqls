@@ -1,0 +1,18 @@
+type Mutation{
+  #Create scenario for service with {uuid} and {params}
+  createScenario(params:ScenarioRequest!, serviceUuid:String!) : ScenarioResponse
+
+  #Update scenario with {scenarioUuid} and scenario {updates}
+  updateScenario(updates:ScenarioRequest!, scenarioUuid: String!) : ScenarioResponse
+
+  #Delete scenario with {uuid}
+  deleteScenario(uuid: String!): ScenarioResponse
+
+  #  #Service
+  #  createService(params: ServiceRequest!) : ServiceResponse
+  #  updateService(uuid: String!, updates: ServiceRequest!) : ServiceResponse
+  #  deleteService(uuid: String!) : ServiceResponse
+  #
+  #  #Logs
+  #  clearAllLogs(scenarioUuid: String!) : String
+}
