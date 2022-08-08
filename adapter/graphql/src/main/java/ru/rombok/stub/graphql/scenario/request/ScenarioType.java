@@ -10,7 +10,6 @@ import java.util.function.Supplier;
 
 @Getter(AccessLevel.PRIVATE)
 public enum ScenarioType {
-    DEFAULT("default", Scenario::new),
     HTTP("HTTP", HttpScenario::new);
 
     private final String name;
@@ -34,7 +33,7 @@ public enum ScenarioType {
         if (scenario instanceof HttpScenario) {
             return HTTP.getName();
         } else {
-            return DEFAULT.getName();
+            throw new IllegalArgumentException("Can't get type name for " + scenario.getClass());
         }
     }
 }

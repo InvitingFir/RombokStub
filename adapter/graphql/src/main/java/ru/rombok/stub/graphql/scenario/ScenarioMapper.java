@@ -28,8 +28,6 @@ public class ScenarioMapper {
     public ScenarioMapper() {
         mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(STRICT);
-        mapper.typeMap(Scenario.class, ScenarioResponse.class)
-            .addMapping(ScenarioType::getTypeNameForScenario, ScenarioResponse::setScenarioType);
         mapper.typeMap(HttpScenario.class, ScenarioResponse.class)
             .addMapping(ScenarioType::getTypeNameForScenario, ScenarioResponse::setScenarioType);
     }

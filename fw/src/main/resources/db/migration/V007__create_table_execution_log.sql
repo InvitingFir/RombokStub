@@ -7,7 +7,7 @@ CREATE TABLE execution_log
     end_date_time   DATE    NOT NULL,
     source          VARCHAR NOT NULL,
     destination     VARCHAR NOT NULL,
-    scenario_id     BIGINT  NOT NULL
+    scenario_id BIGINT
 );
 
 ALTER TABLE execution_log

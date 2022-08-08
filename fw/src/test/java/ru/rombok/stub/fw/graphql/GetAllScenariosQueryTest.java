@@ -2,15 +2,14 @@ package ru.rombok.stub.fw.graphql;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.graphql.spring.boot.test.GraphQLResponse;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import ru.rombok.stub.api.scenario.repository.ScenarioRepository;
+import ru.rombok.stub.api.service.repository.ServiceRepository;
 import ru.rombok.stub.domain.scenario.HttpScenario;
-import ru.rombok.stub.domain.scenario.Scenario;
+import ru.rombok.stub.domain.service.HttpService;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doReturn;
@@ -18,25 +17,18 @@ import static org.mockito.Mockito.doReturn;
 class GetAllScenariosQueryTest extends AbstractGraphQLTest {
 
     @MockBean
-    ScenarioRepository repository;
-    List<Scenario> getAllWithServiceUuid;
+    ServiceRepository repository;
 
     @Override
     public String getTestSourceName() {
         return "GetAllScenarios";
     }
 
-    @BeforeEach
-    void setup() {
-        getAllWithServiceUuid = List.of(
-            provider.forClass(HttpScenario.class),
-            provider.forClass(Scenario.class)
-        );
-    }
-
     @Test
     void getAllScenarios() throws Exception {
-        doReturn(getAllWithServiceUuid).when(repository).getAllWithServiceUuid(any());
+        HttpService service = provider.forClass(HttpService.class);
+        service.setScenarios(List.of(provider.forClass(HttpScenario.class), provider.forClass(HttpScenario.class)));
+        doReturn(Optional.of(service)).when(repository).get(any());
         ObjectNode variables = provider.fromFile(getVariableSourcePath("getAllScenarios.json"), ObjectNode.class);
 
         GraphQLResponse getAllScenarios = testTemplate.perform(getRequestSourcePath("getAllScenarios.graphql"), "getAllScenarios", variables);
@@ -60,7 +52,7 @@ class GetAllScenariosQueryTest extends AbstractGraphQLTest {
 
     @Test
     void getAllScenarios_noService() throws Exception {
-        doReturn(Collections.emptyList()).when(repository).getAllWithServiceUuid(any());
+        doReturn(Optional.empty()).when(repository).get(any());
         ObjectNode variables = provider.fromFile(getVariableSourcePath("getAllScenarios.json"), ObjectNode.class);
 
         GraphQLResponse getAllScenarios = testTemplate.perform(getRequestSourcePath("getAllScenarios.graphql"), "getAllScenarios", variables);

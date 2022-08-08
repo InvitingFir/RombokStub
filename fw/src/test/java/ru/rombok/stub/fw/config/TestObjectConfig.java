@@ -32,7 +32,6 @@ public class TestObjectConfig {
     public Scenario scenario(ScenarioVariable variable, ExecutionLog log) {
         Scenario scenario = provider.fromFile("/testObject/Scenario.json", Scenario.class);
         scenario.setVariables(new ArrayList<>(List.of(variable)));
-        scenario.setLogs(new ArrayList<>(List.of(log)));
         return scenario;
     }
 
@@ -41,7 +40,6 @@ public class TestObjectConfig {
     public HttpScenario httpScenario(ScenarioVariable variable, ExecutionLog log) {
         HttpScenario scenario = provider.fromFile("/testObject/HttpScenario.json", HttpScenario.class);
         scenario.setVariables(new ArrayList<>(List.of(variable)));
-        scenario.setLogs(new ArrayList<>(List.of(log)));
         return scenario;
     }
 

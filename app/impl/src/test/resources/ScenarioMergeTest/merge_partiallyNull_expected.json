@@ -3,16 +3,6 @@
   "action": "action",
   "id": 1,
   "isDefault": true,
-  "logs": [
-    {
-      "destination": "destination",
-      "endDateTime": "2018-08-14T12:17:47.720Z",
-      "errorType": "ACTION_COMPILATION_ERROR",
-      "source": "source",
-      "startDateTime": "2017-08-14T12:17:47.720Z",
-      "success": true
-    }
-  ],
   "name": "name",
   "predicate": "updatedPredicate",
   "url": "null",

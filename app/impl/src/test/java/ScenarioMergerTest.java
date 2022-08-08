@@ -49,4 +49,24 @@ class ScenarioMergerTest {
 
         assertEqualsToFile(actualScenario, "/ScenarioMergeTest/merge_allNotNull_scenarioUpdates.json");
     }
+
+    @Test
+    void merge_varsUpdated_add() {
+        Scenario rootScenario = objectProvider.fromFile("/common/httpScenario.json", HttpScenario.class);
+        Scenario scenarioUpdate = objectProvider.fromFile("/ScenarioMergeTest/merge_varsUpdated_add.json", HttpScenario.class);
+
+        Scenario actualScenario = scenarioMerger.merge(rootScenario, scenarioUpdate);
+
+        assertEqualsToFile(actualScenario, "/ScenarioMergeTest/merge_varsUpdated_add.json");
+    }
+
+    @Test
+    void merge_varsUpdated_remove() {
+        Scenario rootScenario = objectProvider.fromFile("/common/httpScenario.json", HttpScenario.class);
+        Scenario scenarioUpdate = objectProvider.fromFile("/ScenarioMergeTest/merge_varsUpdated_remove.json", HttpScenario.class);
+
+        Scenario actualScenario = scenarioMerger.merge(rootScenario, scenarioUpdate);
+
+        assertEqualsToFile(actualScenario, "/ScenarioMergeTest/merge_varsUpdated_remove.json");
+    }
 }

@@ -8,11 +8,9 @@ import java.util.UUID;
 
 public interface ScenarioRepository {
 
-    Scenario save(Scenario scenario);
-
     Optional<Scenario> get(UUID scenarioUuid);
 
-    Optional<Scenario> delete(UUID scenarioUuid);
+    Optional<List<Scenario>> getAllForService(UUID serviceUuid);
 
-    List<Scenario> getAllWithServiceUuid(UUID serviceUuid);
+    Optional<Scenario> delete(UUID scenarioUuid);
 }

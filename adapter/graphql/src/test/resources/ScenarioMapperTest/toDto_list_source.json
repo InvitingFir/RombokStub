@@ -4,16 +4,6 @@
     "action": "action",
     "id": 1,
     "isDefault": false,
-    "logs": [
-      {
-        "destination": "destination",
-        "endDateTime": "2018-08-14T12:17:47.720Z",
-        "errorType": "ACTION_COMPILATION_ERROR",
-        "source": "source",
-        "startDateTime": "2017-08-14T12:17:47.720Z",
-        "success": true
-      }
-    ],
     "name": "name",
     "predicate": "predicate",
     "url": "null",
@@ -34,16 +24,6 @@
     "action": "action",
     "id": 1,
     "isDefault": false,
-    "logs": [
-      {
-        "destination": "destination",
-        "endDateTime": "2018-08-14T12:17:47.720Z",
-        "errorType": "ACTION_COMPILATION_ERROR",
-        "source": "source",
-        "startDateTime": "2017-08-14T12:17:47.720Z",
-        "success": true
-      }
-    ],
     "name": "name",
     "predicate": "predicate",
     "uuid": "5ce891dc-b61e-4e8a-b183-21b58c31ba66",

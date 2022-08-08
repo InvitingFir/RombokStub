@@ -13,7 +13,7 @@
     <name>RombokStub - Domain</name>
 
     <properties>
-        <jakarta.persistence.version>3.1.0</jakarta.persistence.version>
+        <jakarta.persistence.version>2.2.3</jakarta.persistence.version>
         <java.version>17</java.version>
     </properties>
 
@@ -23,6 +23,11 @@
             <artifactId>jakarta.persistence-api</artifactId>
             <version>${jakarta.persistence.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
