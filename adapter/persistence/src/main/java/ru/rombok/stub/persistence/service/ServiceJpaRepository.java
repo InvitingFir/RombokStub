@@ -8,7 +8,7 @@ import ru.rombok.stub.domain.service.Service;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface ServiceJpaRepository<T extends Service<? extends Scenario>> extends CrudRepository<T, Long> {
+public interface ServiceJpaRepository extends CrudRepository<Service<Scenario>, Long> {
 
     @EntityGraph("service.with-scenario")
     <T extends Scenario> Optional<Service<T>> findByUuid(UUID uuid);

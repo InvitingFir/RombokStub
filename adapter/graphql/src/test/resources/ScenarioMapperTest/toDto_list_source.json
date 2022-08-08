@@ -20,7 +20,7 @@
     ]
   },
   {
-    "type": "Default",
+    "type": "HTTP",
     "action": "action",
     "id": 1,
     "isDefault": false,
@@ -36,6 +36,7 @@
         "name": "var2",
         "value": "value"
       }
-    ]
+    ],
+    "url": "null"
   }
 ]

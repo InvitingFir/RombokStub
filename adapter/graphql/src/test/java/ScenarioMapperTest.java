@@ -35,24 +35,6 @@ class ScenarioMapperTest {
     }
 
     @Test
-    void fromDto_defaultScenario() {
-        ScenarioRequest defaultRequest = objectProvider.fromFile("/ScenarioMapperTest/fromDto_defaultScenario_source.json", ScenarioRequest.class);
-
-        Scenario scenario = mapper.fromDto(defaultRequest);
-
-        assertEqualsToFile(scenario, "/ScenarioMapperTest/fromDto_defaultScenario_expected.json");
-    }
-
-    @Test
-    void toDto_defaultScenario() {
-        Scenario defaultScenario = objectProvider.fromFile("/ScenarioMapperTest/toDto_defaultScenario_source.json", Scenario.class);
-
-        ScenarioResponse scenarioResponse = mapper.toDto(defaultScenario);
-
-        assertEqualsToFile(scenarioResponse, "/ScenarioMapperTest/toDto_defaultScenario_expected.json");
-    }
-
-    @Test
     void toDto_httpScenario() {
         Scenario httpScenario = objectProvider.fromFile("/ScenarioMapperTest/toDto_httpScenario_source.json", HttpScenario.class);
 

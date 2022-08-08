@@ -1,7 +1,7 @@
 {
   "data": {
     "deleteScenario": {
-      "scenarioType": "default",
+      "scenarioType": "HTTP",
       "name": "name",
       "uuid": "5ce891dc-b61e-4e8a-b183-21b58c31ba66",
       "predicate": "predicate",

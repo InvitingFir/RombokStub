@@ -1,7 +1,7 @@
 {
   "type": "HTTP",
   "name": "service",
-  "uuid": "uuid",
+  "uuid": "86a4ab6e-58a3-45ca-b220-f2ef92deffab",
   "enabled": true,
   "scenarios": []
 }
