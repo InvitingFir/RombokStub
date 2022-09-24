@@ -1,4 +1,4 @@
-package ru.rombok.stub.graphql.scenario.request;
+package ru.rombok.stub.graphql.scenario.map;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,24 +9,24 @@ import java.util.Arrays;
 import java.util.function.Supplier;
 
 @Getter(AccessLevel.PRIVATE)
-public enum ScenarioType {
+public enum ScenarioTypeMapping {
     HTTP("HTTP", HttpScenario::new);
 
     private final String name;
     private final Supplier<Scenario> scenarioProvider;
 
-    ScenarioType(String name, Supplier<Scenario> supplier) {
+    ScenarioTypeMapping(String name, Supplier<Scenario> supplier) {
         this.name = name;
         this.scenarioProvider = supplier;
     }
 
     public static Scenario getScenarioForTypeName(String name) {
-        return Arrays.stream(ScenarioType.values())
-            .filter(type -> type.name.equals(name))
-            .map(ScenarioType::getScenarioProvider)
-            .map(Supplier::get)
-            .findAny()
-            .orElseThrow(() -> new IllegalArgumentException(String.format("Scenario with type %s is not supported", name)));
+        return Arrays.stream(ScenarioTypeMapping.values())
+                .filter(type -> type.name.equals(name))
+                .map(ScenarioTypeMapping::getScenarioProvider)
+                .map(Supplier::get)
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException(String.format("Scenario with type %s is not supported", name)));
     }
 
     public static <T extends Scenario> String getTypeNameForScenario(T scenario) {

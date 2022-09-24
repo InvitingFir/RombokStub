@@ -3,7 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.rombok.stub.domain.scenario.HttpScenario;
 import ru.rombok.stub.domain.scenario.Scenario;
-import ru.rombok.stub.graphql.scenario.ScenarioMapper;
+import ru.rombok.stub.graphql.scenario.map.ScenarioMapper;
 import ru.rombok.stub.graphql.scenario.request.ScenarioRequest;
 import ru.rombok.stub.graphql.scenario.response.ScenarioResponse;
 import ru.rombok.stub.test.TestObjectProvider;

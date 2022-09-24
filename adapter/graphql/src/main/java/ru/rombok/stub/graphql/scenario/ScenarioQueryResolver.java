@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 import ru.rombok.stub.api.scenario.GetAllScenariosInbound;
 import ru.rombok.stub.api.scenario.GetScenarioInbound;
+import ru.rombok.stub.graphql.scenario.map.ScenarioMapper;
 import ru.rombok.stub.graphql.scenario.response.ScenarioResponse;
 import ru.rombok.stub.graphql.util.UUIDPattern;
 

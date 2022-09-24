@@ -8,6 +8,7 @@ import ru.rombok.stub.api.scenario.CreateScenarioInbound;
 import ru.rombok.stub.api.scenario.DeleteScenarioInbound;
 import ru.rombok.stub.api.scenario.update.UpdateScenarioInbound;
 import ru.rombok.stub.domain.scenario.Scenario;
+import ru.rombok.stub.graphql.scenario.map.ScenarioMapper;
 import ru.rombok.stub.graphql.scenario.request.ScenarioRequest;
 import ru.rombok.stub.graphql.scenario.response.ScenarioResponse;
 import ru.rombok.stub.graphql.util.UUIDPattern;

@@ -53,10 +53,10 @@ public abstract class Service<T extends Scenario> extends DomainObject {
     /**
      * Service scenarios
      */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(targetEntity = Scenario.class, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(
-        name = "service_id",
-        foreignKey = @ForeignKey(name = "service_scenario_fk"))
+            name = "service_id",
+            foreignKey = @ForeignKey(name = "service_scenario_fk"))
     private List<T> scenarios;
 
     public void setScenarios(List<T> scenarios) {
