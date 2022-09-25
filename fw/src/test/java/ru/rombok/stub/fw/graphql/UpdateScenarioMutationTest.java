@@ -2,7 +2,6 @@ package ru.rombok.stub.fw.graphql;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.graphql.spring.boot.test.GraphQLResponse;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.rombok.stub.api.scenario.repository.ScenarioRepository;
@@ -13,7 +12,6 @@ import java.util.Optional;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doReturn;
 
-@Disabled
 class UpdateScenarioMutationTest extends AbstractGraphQLTest {
 
     @MockBean

@@ -4,8 +4,6 @@
       "scenarioType": "HTTP",
       "name": "updatedName",
       "uuid": "5ce891dc-b61e-4e8a-b183-21b58c31ba66",
-      "predicate": "updatedPredicate",
-      "action": "updatedAction",
       "isDefault": false,
       "variables": [
         {

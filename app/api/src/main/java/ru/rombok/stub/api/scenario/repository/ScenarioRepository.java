@@ -1,5 +1,6 @@
 package ru.rombok.stub.api.scenario.repository;
 
+import ru.rombok.stub.domain.file.File;
 import ru.rombok.stub.domain.scenario.Scenario;
 
 import java.util.List;
@@ -13,4 +14,9 @@ public interface ScenarioRepository {
     Optional<List<Scenario>> getAllForService(UUID serviceUuid);
 
     Optional<Scenario> delete(UUID scenarioUuid);
+
+    Optional<File> getPredicate(UUID scenarioUuid);
+
+    Optional<File> getAction(UUID scenarioUuid);
+
 }

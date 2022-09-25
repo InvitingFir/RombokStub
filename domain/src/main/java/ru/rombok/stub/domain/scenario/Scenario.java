@@ -1,6 +1,5 @@
 package ru.rombok.stub.domain.scenario;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Getter;
@@ -8,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.Type;
 import ru.rombok.stub.domain.DomainObject;
+import ru.rombok.stub.domain.file.File;
 import ru.rombok.stub.domain.service.Service;
 import ru.rombok.stub.domain.var.ScenarioVariable;
 
@@ -51,12 +51,16 @@ public class Scenario extends DomainObject {
     /**
      * Predicate for scenario activation
      */
-    private String predicate;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "predicate_id")
+    private File predicate;
 
     /**
      * Stubbing action
      */
-    private String action;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "action_id")
+    private File action;
 
     /**
      * If there are no scenarios for this service
@@ -64,7 +68,6 @@ public class Scenario extends DomainObject {
      * will be activated. Only one scenario can be
      * set to default
      */
-    @JsonProperty(value = "isDefault")
     private Boolean isDefault;
 
     /**

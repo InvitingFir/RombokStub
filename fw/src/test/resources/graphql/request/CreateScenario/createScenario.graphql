@@ -3,8 +3,6 @@ mutation createScenario($params: ScenarioRequest!, $uuid: String!){
     scenarioType
     name
     uuid
-    predicate
-    action
     isDefault
     variables {
       name

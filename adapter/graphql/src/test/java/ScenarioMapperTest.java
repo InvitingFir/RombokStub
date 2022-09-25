@@ -1,5 +1,4 @@
 import com.fasterxml.jackson.core.type.TypeReference;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.rombok.stub.domain.scenario.HttpScenario;
 import ru.rombok.stub.domain.scenario.Scenario;
@@ -15,15 +14,9 @@ import static ru.rombok.stub.test.RombokAssertions.assertEqualsToFile;
 class ScenarioMapperTest {
     private static final TypeReference<List<Scenario>> SCENARIO_LIST_REFERENCE = new TypeReference<>() {
     };
-    private TestObjectProvider objectProvider;
 
-    private ScenarioMapper mapper;
-
-    @BeforeEach
-    void setup() {
-        mapper = new ScenarioMapper();
-        objectProvider = new TestObjectProvider();
-    }
+    private final TestObjectProvider objectProvider = new TestObjectProvider();
+    private final ScenarioMapper mapper = new ScenarioMapper();
 
     @Test
     void fromDto_httpScenario() {

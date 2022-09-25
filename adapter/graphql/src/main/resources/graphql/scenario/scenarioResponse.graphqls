@@ -10,12 +10,6 @@ type ScenarioResponse{
   #uuid is used for scenario identification
   uuid: ID!
 
-  #Condition that activates scenario
-  predicate: String
-
-  #Operations, that are performed on scenario condition
-  action: String
-
   #Scenario will be activated by default, if no scenario condition is satisfied
   isDefault: Boolean
 

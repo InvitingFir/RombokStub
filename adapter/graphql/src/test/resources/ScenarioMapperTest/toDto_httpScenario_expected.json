@@ -1,8 +1,6 @@
 {
-  "action": "action",
   "isDefault": false,
   "name": "name",
-  "predicate": "predicate",
   "scenarioType": "HTTP",
   "url": "null",
   "uuid": "5ce891dc-b61e-4e8a-b183-21b58c31ba66",

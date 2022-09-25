@@ -26,7 +26,7 @@ public class ScenarioMerger {
     private static final BiConsumer<ScenarioVariable, ScenarioVariable> updateVariableName = (root, update) -> root.setName(update.getName());
     private static final BiConsumer<ScenarioVariable, ScenarioVariable> updateVariableValue = (root, update) -> root.setValue(update.getValue());
     private static final String GETTER_PREFIX = "get";
-    private static final String[] MANUALLY_UPDATED_PROPERTIES = {"variables"};
+    private static final String[] MANUALLY_UPDATED_PROPERTIES = {"variables", "action", "predicate"};
 
     public Scenario merge(Scenario root, Scenario updated) {
         assertIsNotNull(root);
@@ -103,6 +103,8 @@ public class ScenarioMerger {
             List<ScenarioVariable> deprecatedVariables = rootVariables.subList(updatedVariablesListSize, rootVariableListSize);
             rootVariables.retainAll(deprecatedVariables);
             variablesToUpdate = updatedVariablesListSize;
+        } else {
+            variablesToUpdate = rootVariableListSize;
         }
 
         range(0, variablesToUpdate)

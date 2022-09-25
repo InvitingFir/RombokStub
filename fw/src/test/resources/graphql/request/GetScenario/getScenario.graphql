@@ -3,8 +3,6 @@ query getScenario($uuid: String!){
     scenarioType
     name
     uuid
-    predicate
-    action
     isDefault
     variables {
       name
