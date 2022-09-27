@@ -11,7 +11,7 @@ public interface ScenarioRepository {
 
     Optional<Scenario> get(UUID scenarioUuid);
 
-    Optional<List<Scenario>> getAllForService(UUID serviceUuid);
+    List<Scenario> getAllForService(UUID serviceUuid);
 
     Optional<Scenario> delete(UUID scenarioUuid);
 

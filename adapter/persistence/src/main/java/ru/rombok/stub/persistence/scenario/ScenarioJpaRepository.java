@@ -14,7 +14,7 @@ public interface ScenarioJpaRepository extends CrudRepository<Scenario, Long> {
     Optional<Scenario> findByUuid(UUID uuid);
 
     @EntityGraph("Scenario.withVars")
-    Optional<List<Scenario>> findAllByServiceUuid(UUID serviceUuid);
+    List<Scenario> findAllByServiceUuid(UUID serviceUuid);
 
     Optional<Scenario> deleteByUuid(UUID uuid);
 }

@@ -25,7 +25,7 @@ public class ScenarioRepositoryJpaAdapter implements ScenarioRepository {
     }
 
     @Override
-    public Optional<List<Scenario>> getAllForService(UUID serviceUuid) {
+    public List<Scenario> getAllForService(UUID serviceUuid) {
         return repository.findAllByServiceUuid(serviceUuid);
     }
 
