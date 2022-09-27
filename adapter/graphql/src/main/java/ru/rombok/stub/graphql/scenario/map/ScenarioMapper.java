@@ -1,12 +1,10 @@
-package ru.rombok.stub.graphql.scenario;
+package ru.rombok.stub.graphql.scenario.map;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.Provider;
 import org.springframework.stereotype.Component;
 import ru.rombok.stub.domain.scenario.HttpScenario;
 import ru.rombok.stub.domain.scenario.Scenario;
 import ru.rombok.stub.graphql.scenario.request.ScenarioRequest;
-import ru.rombok.stub.graphql.scenario.request.ScenarioType;
 import ru.rombok.stub.graphql.scenario.response.ScenarioResponse;
 import ru.rombok.stub.graphql.util.AdapterMappingException;
 
@@ -18,27 +16,24 @@ import static ru.rombok.stub.graphql.util.FunctionalUtils.first;
 
 @Component
 public class ScenarioMapper {
-    private final Provider<Scenario> forRequest = request -> first(Provider.ProvisionRequest<Scenario>::getSource)
-        .andThen(ScenarioRequest.class::cast)
-        .andThen(ScenarioRequest::getScenarioType)
-        .andThen(ScenarioType::getScenarioForTypeName)
-        .apply(request);
     private final ModelMapper mapper;
 
     public ScenarioMapper() {
         mapper = new ModelMapper();
         mapper.getConfiguration().setMatchingStrategy(STRICT);
-        mapper.typeMap(Scenario.class, ScenarioResponse.class)
-            .addMapping(ScenarioType::getTypeNameForScenario, ScenarioResponse::setScenarioType);
         mapper.typeMap(HttpScenario.class, ScenarioResponse.class)
-            .addMapping(ScenarioType::getTypeNameForScenario, ScenarioResponse::setScenarioType);
+                .addMapping(ScenarioTypeMapping::getTypeNameForScenario, ScenarioResponse::setScenarioType);
     }
 
     public ScenarioResponse toDto(Scenario scenario) {
         try {
             return mapper.map(scenario, ScenarioResponse.class);
         } catch (Exception e) {
-            throw AdapterMappingException.forObject(Scenario.class, ScenarioResponse.class, e);
+            throw AdapterMappingException.builder()
+                    .from(Scenario.class)
+                    .to(ScenarioResponse.class)
+                    .sourceException(e)
+                    .forSingleObject();
         }
     }
 
@@ -48,19 +43,27 @@ public class ScenarioMapper {
                 .map(this::toDto)
                 .collect(Collectors.toList());
         } catch (Exception e) {
-            throw AdapterMappingException.forListOf(Scenario.class, ScenarioResponse.class, e);
+            throw AdapterMappingException.builder()
+                    .from(Scenario.class)
+                    .to(ScenarioResponse.class)
+                    .sourceException(e)
+                    .forList();
         }
     }
 
     public Scenario fromDto(ScenarioRequest request) {
         try {
             Scenario scenario = first(ScenarioRequest::getScenarioType)
-                .andThen(ScenarioType::getScenarioForTypeName)
+                    .andThen(ScenarioTypeMapping::getScenarioForTypeName)
                 .apply(request);
             mapper.map(request, scenario);
             return scenario;
         } catch (Exception e) {
-            throw AdapterMappingException.forObject(Scenario.class, ScenarioResponse.class, e);
+            throw AdapterMappingException.builder()
+                    .from(Scenario.class)
+                    .to(ScenarioResponse.class)
+                    .sourceException(e)
+                    .forSingleObject();
         }
     }
 }

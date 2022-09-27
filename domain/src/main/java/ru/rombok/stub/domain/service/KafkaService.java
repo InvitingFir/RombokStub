@@ -1,11 +1,11 @@
 package ru.rombok.stub.domain.service;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import ru.rombok.stub.domain.scenario.Scenario;
+
+import javax.persistence.Entity;
 
 /**
  * Service for stubbing Kafka responses
@@ -14,7 +14,6 @@ import ru.rombok.stub.domain.scenario.Scenario;
 @Setter
 @ToString
 @Entity
-@DiscriminatorValue("KAFKA")
 public class KafkaService extends Service<Scenario> {
 
     /**

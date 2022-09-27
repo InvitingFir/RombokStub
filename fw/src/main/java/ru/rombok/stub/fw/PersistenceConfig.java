@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories
+@EnableJpaRepositories(basePackages = "ru.rombok.stub.persistence")
 @EntityScan("ru.rombok.stub.domain")
 public class PersistenceConfig {
 }

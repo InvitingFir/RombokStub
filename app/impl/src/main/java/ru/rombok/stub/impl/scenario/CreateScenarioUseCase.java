@@ -21,10 +21,11 @@ public class CreateScenarioUseCase implements CreateScenarioInbound {
     @Override
     @Transactional
     public Scenario execute(Scenario scenario, UUID serviceUuid) {
+        Service<Scenario> service = serviceRepository
+            .get(serviceUuid)
+            .orElseThrow(() -> new ServiceNotFoundException(serviceUuid));
         scenario.setUuid(uuid.randomUuid());
-        Service<Scenario> service = serviceRepository.get(serviceUuid).orElseThrow(() -> new ServiceNotFoundException(serviceUuid));
         service.getScenarios().add(scenario);
-        serviceRepository.save(service);
         return scenario;
     }
 }

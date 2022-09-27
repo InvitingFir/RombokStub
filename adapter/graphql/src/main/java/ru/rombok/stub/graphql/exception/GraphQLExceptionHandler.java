@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.rombok.stub.api.scenario.exception.ScenarioNotFoundException;
 import ru.rombok.stub.api.service.exception.ServiceNotFoundException;
+import ru.rombok.stub.graphql.util.AdapterMappingException;
 
 import javax.validation.ConstraintViolationException;
 
@@ -19,19 +20,25 @@ public class GraphQLExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ThrowableGraphQLError handle(Exception e) {
-        log.info("", e);
+        log.error("", e);
         return new ThrowableGraphQLError(e, HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ThrowableGraphQLError handle(IllegalArgumentException e) {
-        log.info("", e);
+        log.error("", e);
+        return new ThrowableGraphQLError(e, HttpStatus.BAD_REQUEST.getReasonPhrase());
+    }
+
+    @ExceptionHandler(AdapterMappingException.class)
+    public ThrowableGraphQLError handle(AdapterMappingException e) {
+        log.error("", e);
         return new ThrowableGraphQLError(e, HttpStatus.BAD_REQUEST.getReasonPhrase());
     }
 
     @ExceptionHandler({ScenarioNotFoundException.class, ServiceNotFoundException.class, ConstraintViolationException.class})
     public ThrowableGraphQLError handle(RuntimeException e) {
-        log.info("", e);
+        log.error("", e);
         return factory.mapToException(e);
     }
 }

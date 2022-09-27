@@ -1,8 +1,9 @@
 package ru.rombok.stub.domain.var;
 
-import jakarta.persistence.Entity;
 import lombok.*;
 import ru.rombok.stub.domain.DomainObject;
+
+import javax.persistence.Entity;
 
 /**
  * Constant variables, that can be used in scenario

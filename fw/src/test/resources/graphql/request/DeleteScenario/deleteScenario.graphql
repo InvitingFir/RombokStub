@@ -3,8 +3,6 @@ mutation deleteScenario($uuid:String!){
     scenarioType
     name
     uuid
-    predicate
-    action
     isDefault
     variables {
       name

@@ -1,12 +1,14 @@
 CREATE TABLE scenario
 (
     id         BIGSERIAL PRIMARY KEY,
+    type       VARCHAR NOT NULL,
     uuid       UUID    NOT NULL UNIQUE,
     name       VARCHAR NOT NULL,
     predicate  VARCHAR NOT NULL,
     action     VARCHAR NOT NULL,
-    isDefault  BOOL DEFAULT FALSE,
-    service_id BIGINT  NOT NULL
+    is_default BOOL DEFAULT FALSE,
+    service_id BIGINT,
+    url        VARCHAR
 );
 
 ALTER TABLE scenario

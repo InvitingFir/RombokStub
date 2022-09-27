@@ -1,0 +1,34 @@
+{
+  "type": "HTTP",
+  "action": {
+    "content": "AQID",
+    "fileStorageType": "DATA_BASE",
+    "uploadedAt": "2022-09-25T14:29:02.354733Z",
+    "uuid": "a3b3b4c4-02b4-4ff9-82e9-555555555555"
+  },
+  "id": 2,
+  "isDefault": true,
+  "name": "updatedName",
+  "predicate": {
+    "content": "AQID",
+    "fileStorageType": "DATA_BASE",
+    "uploadedAt": "2022-09-25T14:29:02.354733Z",
+    "uuid": "a3b3b4c4-02b4-4ff9-82e9-555555555555"
+  },
+  "url": "updatedUrl",
+  "uuid": "11111111-2222-3333-4444-555555555555",
+  "variables": [
+    {
+      "name": "updatedVar1",
+      "value": "updatedVar1Value"
+    },
+    {
+      "name": "updatedVar2",
+      "value": "updatedVar2Value"
+    },
+    {
+      "name": "updatedVar3",
+      "value": "updatedVar3Value"
+    }
+  ]
+}

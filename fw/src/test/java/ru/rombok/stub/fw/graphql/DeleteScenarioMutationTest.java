@@ -5,7 +5,7 @@ import com.graphql.spring.boot.test.GraphQLResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.rombok.stub.api.scenario.repository.ScenarioRepository;
-import ru.rombok.stub.domain.scenario.Scenario;
+import ru.rombok.stub.domain.scenario.HttpScenario;
 
 import java.util.Optional;
 
@@ -25,7 +25,7 @@ class DeleteScenarioMutationTest extends AbstractGraphQLTest {
 
     @Test
     void deleteScenario() throws Exception {
-        doAnswer(answer -> Optional.of(provider.forClass(Scenario.class))).when(repository).delete(any());
+        doAnswer(answer -> Optional.of(provider.forClass(HttpScenario.class))).when(repository).delete(any());
         ObjectNode variables = provider.fromFile(getVariableSourcePath("deleteScenario.json"), ObjectNode.class);
 
         GraphQLResponse deleteScenario = testTemplate.perform(getRequestSourcePath("deleteScenario.graphql"), "deleteScenario", variables);

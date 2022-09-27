@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.rombok.stub.api.scenario.repository.ScenarioRepository;
 import ru.rombok.stub.domain.scenario.HttpScenario;
-import ru.rombok.stub.domain.scenario.Scenario;
 
 import java.util.Optional;
 
@@ -21,19 +20,6 @@ class GetScenarioQueryTest extends AbstractGraphQLTest {
     @Override
     public String getTestSourceName() {
         return "GetScenario";
-    }
-
-    @Test
-    void getScenario() throws Exception {
-        doReturn(Optional.of(provider.forClass(Scenario.class))).when(repository).get(any());
-        ObjectNode variables = provider.fromFile(getVariableSourcePath("getScenario.json"), ObjectNode.class);
-
-        GraphQLResponse getScenario = testTemplate.perform(getRequestSourcePath("getScenario.graphql"), "getScenario", variables);
-
-        getScenario
-            .assertThatErrorsField().isNotPresent()
-            .and()
-            .assertThatJsonContent().isEqualToJson(getExpectedSourcePath("getScenario.json"), this.getClass());
     }
 
     @Test

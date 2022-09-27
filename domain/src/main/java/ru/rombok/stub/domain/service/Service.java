@@ -2,14 +2,16 @@ package ru.rombok.stub.domain.service;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Type;
 import ru.rombok.stub.domain.DomainObject;
 import ru.rombok.stub.domain.scenario.Scenario;
 
+import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Stubbed service
@@ -23,11 +25,14 @@ import java.util.List;
 @JsonTypeInfo(property = "type", use = JsonTypeInfo.Id.NAME)
 @JsonSubTypes({
     @JsonSubTypes.Type(value = HttpService.class, name = "HTTP"),
-    @JsonSubTypes.Type(value = KafkaService.class, name = "Kafka"),
-    @JsonSubTypes.Type(value = Service.class, name = "Default"),
+    @JsonSubTypes.Type(value = KafkaService.class, name = "Kafka")
 })
+
+@NamedEntityGraph(name = "service.with-scenario",
+    attributeNodes = @NamedAttributeNode(value = "scenarios")
+)
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Service<T extends Scenario> extends DomainObject {
+public abstract class Service<T extends Scenario> extends DomainObject {
 
     /**
      * Service displayed name
@@ -37,7 +42,8 @@ public class Service<T extends Scenario> extends DomainObject {
     /**
      * Unique identifier
      */
-    private String uuid;
+    @Type(type = "org.hibernate.type.PostgresUUIDType")
+    private UUID uuid;
 
     /**
      * Is stub service enabled (disabled by default)
@@ -47,8 +53,10 @@ public class Service<T extends Scenario> extends DomainObject {
     /**
      * Service scenarios
      */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(foreignKey = @ForeignKey(name = "service_scenario_fk"))
+    @OneToMany(targetEntity = Scenario.class, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(
+            name = "service_id",
+            foreignKey = @ForeignKey(name = "service_scenario_fk"))
     private List<T> scenarios;
 
     public void setScenarios(List<T> scenarios) {

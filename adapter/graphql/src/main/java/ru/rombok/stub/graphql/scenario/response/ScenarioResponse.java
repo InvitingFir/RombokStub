@@ -9,8 +9,6 @@ import java.util.List;
 public class ScenarioResponse {
     private String scenarioType;
     private String name;
-    private String predicate;
-    private String action;
     private Boolean isDefault;
     private String url;
     private String uuid;

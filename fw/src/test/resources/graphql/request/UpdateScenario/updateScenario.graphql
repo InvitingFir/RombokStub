@@ -3,8 +3,6 @@ mutation updateScenario($uuid: String!, $updates: ScenarioRequest!){
     scenarioType
     name
     uuid
-    predicate
-    action
     isDefault
     variables {
       name

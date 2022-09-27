@@ -14,7 +14,6 @@ import java.util.UUID;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.verify;
 
 class CreateScenarioMutationTest extends AbstractGraphQLTest {
 
@@ -33,12 +32,10 @@ class CreateScenarioMutationTest extends AbstractGraphQLTest {
     void createScenario() throws Exception {
         doReturn(UUID.fromString(RANDOM_UUID)).when(uuidUtils).randomUuid();
         doReturn(Optional.of(provider.forClass(HttpService.class))).when(repository).get(any());
-        doReturn(null).when(repository).save(any());
         ObjectNode variables = provider.fromFile(getVariableSourcePath("createScenario.json"), ObjectNode.class);
 
         GraphQLResponse createScenario = testTemplate.perform(getRequestSourcePath("createScenario.graphql"), "createScenario", variables);
 
-        verify(repository).save(any());
         createScenario
             .assertThatErrorsField().isNotPresent()
             .and()

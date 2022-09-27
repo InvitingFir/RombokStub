@@ -1,11 +1,10 @@
 package ru.rombok.stub.domain.log;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.*;
 import ru.rombok.stub.domain.DomainObject;
+import ru.rombok.stub.domain.scenario.Scenario;
 
+import javax.persistence.*;
 import java.time.Instant;
 
 /**
@@ -49,4 +48,10 @@ public class ExecutionLog extends DomainObject {
      * Responding system (HTTP url, kafka topic, etc.)
      */
     private String destination;
+
+    @ManyToOne
+    @JoinColumn(
+        foreignKey = @ForeignKey(name = "scenario_execution_log_fk"),
+        name = "scenario_id")
+    private Scenario scenario;
 }

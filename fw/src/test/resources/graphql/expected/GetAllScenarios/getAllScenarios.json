@@ -5,8 +5,6 @@
         "scenarioType": "HTTP",
         "name": "name",
         "uuid": "5ce891dc-b61e-4e8a-b183-21b58c31ba66",
-        "predicate": "predicate",
-        "action": "action",
         "isDefault": false,
         "variables": [
           {
@@ -17,18 +15,17 @@
         "url": "null"
       },
       {
-        "scenarioType": "default",
+        "scenarioType": "HTTP",
         "name": "name",
         "uuid": "5ce891dc-b61e-4e8a-b183-21b58c31ba66",
-        "predicate": "predicate",
-        "action": "action",
         "isDefault": false,
         "variables": [
           {
             "name": "var1",
             "value": "value"
           }
-        ]
+        ],
+        "url": "null"
       }
     ]
   }

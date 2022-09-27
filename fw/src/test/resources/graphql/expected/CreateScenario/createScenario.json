@@ -3,10 +3,8 @@
     "createScenario": {
       "scenarioType": "HTTP",
       "uuid": "9161f68d-da9e-4fa2-b0ad-142bce3b4550",
-      "action": "action",
       "isDefault": false,
       "name": "name",
-      "predicate": "predicate",
       "url": "url"
     }
   }

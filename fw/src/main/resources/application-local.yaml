@@ -1,9 +1,10 @@
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/rombokstub
     username: test
     password: test
+  jpa:
+    show-sql: true
 
   graphql:
     graphiql:
@@ -14,3 +15,9 @@ management:
     web:
       exposure:
         include: "*"
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: TRACE

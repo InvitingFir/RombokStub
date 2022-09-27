@@ -1,9 +1,11 @@
 package ru.rombok.stub.domain.scenario;
 
-import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 /**
  * Scenario for http service
@@ -12,6 +14,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Entity
+@DiscriminatorValue("HTTP")
 public class HttpScenario extends Scenario {
     /**
      * Activation URL

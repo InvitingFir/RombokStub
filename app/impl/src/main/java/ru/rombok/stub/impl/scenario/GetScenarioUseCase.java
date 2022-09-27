@@ -16,6 +16,8 @@ public class GetScenarioUseCase implements GetScenarioInbound {
 
     @Override
     public Scenario execute(UUID scenarioUuid) {
-        return repository.get(scenarioUuid).orElseThrow(() -> new ScenarioNotFoundException(scenarioUuid));
+        return repository
+            .get(scenarioUuid)
+            .orElseThrow(() -> new ScenarioNotFoundException(scenarioUuid));
     }
 }

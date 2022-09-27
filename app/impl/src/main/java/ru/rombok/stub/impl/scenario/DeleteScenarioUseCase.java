@@ -16,6 +16,8 @@ public class DeleteScenarioUseCase implements DeleteScenarioInbound {
 
     @Override
     public Scenario execute(UUID scenarioUuid) {
-        return repository.delete(scenarioUuid).orElseThrow(() -> new ScenarioNotFoundException(scenarioUuid));
+        return repository
+            .delete(scenarioUuid)
+            .orElseThrow(() -> new ScenarioNotFoundException(scenarioUuid));
     }
 }
